@@ -39,7 +39,7 @@ Create a service task in a Zeebe BPMN model like this, replacing the value for `
     <zeebe:taskHeaders>
       <zeebe:header key="method" value="post" />
       <zeebe:header key="url" value="https://api.github.com/repos/jwulf/camunda-cloud-message-publish/dispatches" />
-      <zeebe:header key="body" value="{&#34;message_name&#34;: &#34;startWorkflowX_MSG&#34;}" />
+      <zeebe:header key="body" value="{event_type: &#34;message&#34;, client_payload: {&#34;message_name&#34;: &#34;startWorkflowX_MSG&#34;}}" />
     </zeebe:taskHeaders>
     <zeebe:ioMapping>
       <zeebe:input source="githubAuthorization" target="authorization" />
