@@ -30,6 +30,8 @@ In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-
 
 Replace `${SPECIFIC_MESSAGE_NAME}` with the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
 
+## Minimal Example
+
 Here is the minimal example, to publish a message to Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
 
 Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `MESSAGE_NAME` with the name of the message that you want to send :
