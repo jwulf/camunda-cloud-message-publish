@@ -26,11 +26,13 @@ The messaging publishing workflow in [.github/workflows/publish_message.yml](.gi
 
 ## Using the message publisher
 
-In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{ message_name: "${SPECIFIC_MESSAGE_NAME}"`. Replace `${SPECIFIC_MESSAGE_NAME}` with the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
+In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{"event_type": "message", "client_payload": {"message_name": "${SPECIFIC_MESSAGE_NAME}"}}"`. 
+
+Replace `${SPECIFIC_MESSAGE_NAME}` with the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
 
 Here is the minimal example, to publish a message to Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
 
-Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `startWorkflowX_MSG` with the name of the message that you want to send :
+Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `MESSAGE_NAME` with the name of the message that you want to send :
 
 ```
 <bpmn:serviceTask id="Task_0ozskvn" name="Build new Release images">
@@ -39,7 +41,7 @@ Create a service task in a Zeebe BPMN model like this, replacing the value for `
     <zeebe:taskHeaders>
       <zeebe:header key="method" value="post" />
       <zeebe:header key="url" value="https://api.github.com/repos/jwulf/camunda-cloud-message-publish/dispatches" />
-      <zeebe:header key="body" value="{event_type: &#34;message&#34;, client_payload: {&#34;message_name&#34;: &#34;startWorkflowX_MSG&#34;}}" />
+      <zeebe:header key="body" value="{&#34;event_type&#34;: &#34;message&#34;, &#34;client_payload&#34;: {&#34;message_name&#34;: &#34;MESSAGE_NAME&#34;}}" />
     </zeebe:taskHeaders>
     <zeebe:ioMapping>
       <zeebe:input source="githubAuthorization" target="authorization" />
