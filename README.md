@@ -26,7 +26,7 @@ The messaging publishing workflow in [.github/workflows/publish_message.yml](.gi
 
 ## Using the message publisher
 
-In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{ message_name: ${SPECIFIC_MESSAGE_NAME }`. This is the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
+In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{ message_name: "${SPECIFIC_MESSAGE_NAME }"`. This is the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
 
 Here is the minimal example, to publish a message back to Zeebe in Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
 
