@@ -60,4 +60,10 @@ When you start an instance of a workflow, you need to include the following key 
 }
 ```
 
-The token will be templated into this variable from the Worker Variables at runtime by Zeebe. This makes the GitHub token available to the CAMUNDA-HTTP worker.  The I/O mapping in the service task will cause the service worker to use this as the authorization header when it  posts the repository dispatch event to trigger the GitHub action.
+For example:
+
+```
+zbctl create instance test-message-publish-1 --variables '{"githubAuthorization": "Bearer {{GitHubToken}}"}'
+```
+
+The token will be templated into `{{GitHubToken}}` from the Worker Variables at runtime by Zeebe. This makes the GitHub token available to the CAMUNDA-HTTP worker, with no need to hold it anywhere else in your system.  The I/O mapping to `authorization` in the service task will cause the service worker to use this token as the authorization header when it  posts the repository dispatch event to trigger the GitHub action.
