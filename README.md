@@ -26,9 +26,9 @@ The messaging publishing workflow in [.github/workflows/publish_message.yml](.gi
 
 ## Using the message publisher
 
-In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{ message_name: "${SPECIFIC_MESSAGE_NAME }"`. This is the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
+In a BPMN model, the messager publisher task appears as a task of type `CAMUNDA-HTTP`. Specialisation of the task is accomplished by setting a custom header on the task with the key `body` and the value `{ message_name: "${SPECIFIC_MESSAGE_NAME}"`. Replace `${SPECIFIC_MESSAGE_NAME}` with the name of the message that will be published. [See here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830) for how that works.
 
-Here is the minimal example, to publish a message back to Zeebe in Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
+Here is the minimal example, to publish a message to Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
 
 Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `startWorkflowX_MSG` with the name of the message that you want to send :
 
@@ -58,4 +58,4 @@ When you start an instance of a workflow, you need to include the following key 
 }
 ```
 
-The token will be templated into this variable at runtime by Zeebe. This makes the GitHub token available to the CAMUNDA-HTTP worker.  The I/O mapping in the service task will cause the service worker to use this as the authorization header when it  posts the repository dispatch event to trigger the GitHub action.
+The token will be templated into this variable from the Worker Variables at runtime by Zeebe. This makes the GitHub token available to the CAMUNDA-HTTP worker.  The I/O mapping in the service task will cause the service worker to use this as the authorization header when it  posts the repository dispatch event to trigger the GitHub action.
