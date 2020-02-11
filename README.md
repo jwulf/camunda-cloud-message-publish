@@ -52,7 +52,7 @@ jobs:
 
 Here is the minimal example, to publish a message back to Zeebe in Camunda Cloud, for example, to trigger the message start event of a workflow, with no variables.
 
-Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `startWorkflowX_MSG` with the name of the message that you want to send ([see here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830):
+Create a service task in a Zeebe BPMN model like this, replacing the value for `url` with the URL for your forked repository, and `startWorkflowX_MSG` with the name of the message that you want to send ([see here](https://github.com/zeebe-io/zeebe-http-worker/issues/45#issuecomment-577532830)):
 
 ```
 <bpmn:serviceTask id="Task_0ozskvn" name="Build new Release images">
