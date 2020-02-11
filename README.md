@@ -2,11 +2,9 @@
 
 With a fork of this repository you have a serverless Zeebe message publishing task worker for Camunda Cloud. You can use it to create complex multi-repo GitHub workflows orchestrated by BPMN.
 
-This repository has a GitHub Workflow that uses [jwulf/zeebe-action](https://github.com/jwulf/zeebe-action) to act as a Zeebe message publisher for [Camunda Cloud](https://camunda.io).
+The messaging publishing workflow in [.github/workflows/publish_message.yml](.github/workflows/publish_message.yml) uses [jwulf/zeebe-action](https://github.com/jwulf/zeebe-action) to publish a message to [Camunda Cloud](https://camunda.io).
 
-The GitHub Action is triggered by the CAMUNDA-HTTP task worker in Camunda Cloud.
-
-The messaging publishing workflow in [.github/workflows/publish_message.yml](.github/workflows/publish_message.yml) does all the work.
+The GitHub Workflow is triggered by a CAMUNDA-HTTP task in Camunda Cloud.
 
 ## Setup
 
