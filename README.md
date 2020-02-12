@@ -69,3 +69,7 @@ zbctl create instance test-message-publish-1 --variables '{"githubAuthorization"
 ```
 
 The token will be templated into `{{GitHubToken}}` from the Worker Variables at runtime by Zeebe. This makes the GitHub token available to the CAMUNDA-HTTP worker, with no need to hold it anywhere else in your system.  The I/O mapping to `authorization` in the service task will cause the service worker to use this token as the authorization header when it  posts the repository dispatch event to trigger the GitHub action.
+
+## More advanced example
+
+At the moment it is not possible to specialise the send task in a model with the message name _and_ send variables from the task in the message. This is because of the way the Zeebe HTTP Worker naively merges custom headers and I/O mappings - although they appear to be JSON objects, the worker treats them as a dictionary of strings when merging them, so variable mappings into the `body` key overwrite any custom headers setting values in it (See [this issue](https://github.com/zeebe-io/zeebe-http-worker/issues/47)). 
