@@ -72,4 +72,4 @@ The token will be templated into `{{GitHubToken}}` from the Worker Variables at 
 
 ## More advanced example
 
-At the moment it is not possible to specialise the send task in a model with the message name _and_ send variables from the task in the message. This is because of the way the Zeebe HTTP Worker merges custom headers and I/O mappings - although they appear to be JSON objects, the worker treats them as a dictionary of strings when merging them, so variable mappings into the `body` key overwrite any custom headers setting values in `body` (See [this issue](https://github.com/zeebe-io/zeebe-http-worker/issues/47)). 
+At the moment, it is not possible to specialise the send task in a model with the message name _and_ send variables from the task in the message. This is because of the way the Zeebe HTTP Worker merges custom headers and I/O mappings - although they appear to be JSON objects, the worker treats them as a dictionary of strings when merging them, so variable mappings into the `body` key overwrite any custom headers setting values in `body` (See [this issue](https://github.com/zeebe-io/zeebe-http-worker/issues/47)). 
